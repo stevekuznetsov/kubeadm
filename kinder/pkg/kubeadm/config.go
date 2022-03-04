@@ -233,6 +233,8 @@ metadata:
 kubernetesVersion: {{.KubernetesVersion}}
 clusterName: "{{.ClusterName}}"
 controlPlaneEndpoint: "{{ .ControlPlaneEndpoint }}"
+etcd:
+  crdb: true
 # on docker for mac we have to expose the api server via port forward,
 # so we need to ensure the cert is valid for localhost so we can talk
 # to the cluster after rewriting the kubeconfig to point to localhost

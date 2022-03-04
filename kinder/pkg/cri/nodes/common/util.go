@@ -36,6 +36,7 @@ func BaseRunArgs(cluster, name, role string) ([]string, error) {
 		"run",
 		"--detach", // run the container detached
 		"--tty",    // allocate a tty for entrypoint logs
+		"--cgroup-manager=cgroupfs",
 		// label the node with the cluster ID
 		"--label", fmt.Sprintf("%s=%s", constants.ClusterLabelKey, cluster),
 		"--label", fmt.Sprintf("%s=%s", constants.DeprecatedClusterLabelKey, cluster),

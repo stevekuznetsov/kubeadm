@@ -17,8 +17,6 @@ limitations under the License.
 package host
 
 import (
-	"time"
-
 	"k8s.io/kubeadm/kinder/pkg/exec"
 )
 
@@ -32,15 +30,16 @@ func PullImage(image string, retries int) (bool, error) {
 		return false, nil
 	}
 
-	// otherwise try to pull it
-	var err error
-	if err = exec.NewHostCmd("docker", "pull", image).Run(); err != nil {
-		for i := 0; i < retries; i++ {
-			time.Sleep(time.Second * time.Duration(i+1))
-			if err = exec.NewHostCmd("docker", "pull", image).Run(); err == nil {
-				break
-			}
-		}
-	}
-	return true, err
+	return true, nil
+	//// otherwise try to pull it
+	//var err error
+	//if err = exec.NewHostCmd("docker", "pull", image).Run(); err != nil {
+	//	for i := 0; i < retries; i++ {
+	//		time.Sleep(time.Second * time.Duration(i+1))
+	//		if err = exec.NewHostCmd("docker", "pull", image).Run(); err == nil {
+	//			break
+	//		}
+	//	}
+	//}
+	//return true, err
 }
